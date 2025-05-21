@@ -1,39 +1,295 @@
 
+/* === MISE EN PAGE GLOBALE === */
+
 body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Supprime les marges par défaut autour du corps et de la page */
+  padding: 0; /* Supprime les espacements internes par défaut */
+  box-sizing: border-box; /* Inclut la bordure et le padding dans la largeur/hauteur des éléments */
 }
+
+
+
+
+
+/* === IMPORT DES TYPOGRAPHIE === */
+
+@font-face {
+  font-family: 'kindora'; /* Nom de la police personnalisée */
+  src: url('./font/kindora.otf') format('opentype'), /* Chemin vers la police au format OpenType */
+       url('./font/kindora.ttf') format('truetype'); /* Chemin vers la police au format TrueType */
+  font-weight: normal; /* Définit le poids (épaisseur) de la police */
+  font-style: normal; /* Définit le style (normal, italique, etc.) */
+}
+
+@font-face {
+  font-family: 'chillax'; /* Nom d'une autre police personnalisée */
+  src: url('./font/chillax.otf') format('opentype'), /* Chemin vers la police OpenType */
+    url('./font/chillax.ttf') format('truetype'); /* Chemin vers la police TrueType */
+  font-weight: normal; /* Poids normal */
+  font-style: normal; /* Style normal */
+}
+
+@font-face {
+  font-family: 'montserrat'; /* Nom d'une troisième police personnalisée */
+  src: url('./font/montserrat.ttf') format('truetype'); /* Chemin vers la police TrueType */
+  font-weight: normal; /* Poids normal */
+  font-style: normal; /* Style normal */
+}
+
+
+
+
+
+
+/* === NAVBAR === */
+
+.navbar {
+  font-family: 'chillax', sans-serif; /* Police de caractères pour la navbar */
+  padding: 30px; /* Espacement interne autour du contenu */
+  height: 120px; /* Hauteur fixe pour stabilité d'affichage */
+  display: flex; /* Utilise Flexbox pour aligner horizontalement */
+  justify-content: space-between; /* Écarte les éléments au maximum */
+  align-items: center; /* Centre verticalement les éléments */
+  width: 100%; /* Navbar prend toute la largeur */
+  box-sizing: border-box; /* Inclut padding et bordures dans le width */
+  position: relative; /* Nécessaire pour positionner les éléments enfants en absolute */
+  z-index: 3; /* Place ce voile au-dessus de l’image mais sous le texte */
+}
+
+.navbar a {
+  color: white;
+  background-color: transparent; /* Pas de fond pour les liens */
+  text-decoration: none; /* Enlève le soulignement */
+  list-style: none; /* Supprime les puces */
+}
+
+.navbar .nom {
+  font-size: 32px; /* Taille du texte pour le nom */
+  font-weight: bold; /* Texte en gras */
+  margin-left: 15px;
+}
+
+.navbar .nav-links ul {
+  display: flex; /* Aligne les liens horizontalement */
+  font-size: 18px;
+}
+
+.navbar .nav-links ul li {
+  margin: 0 30px; /* Espace horizontal entre chaque lien */
+}
+
+.navbar .menu-hamburger {
+  display: none; /* Caché en desktop */
+  position: absolute; /* Positionné par rapport à .navbar */
+  top: 50%; /* Centré verticalement */
+  right: 30px; /* Décalé du bord droit */
+  transform: translateY(-50%); /* Corrige le centrage vertical */
+  width: 35px; /* Taille de l'icône hamburger */
+  cursor: pointer; /* Curseur en forme de main au survol */
+}
+
+
+
+/* === Version hamburger === */
+
+@media screen and (max-width: 900px) {
+
+  .navbar {
+    padding: 50px; /* Réduit le padding en mobile */
+    height: 120px; /* Hauteur fixe pour stabilité d'affichage */
+  }
+
+  .navbar .menu-hamburger {
+    display: block; /* Affiche le menu hamburger */
+    z-index: 1000;
+  }
+
+  .navbar .nav-links {
+    position: fixed; /* Fixe la position du menu sur tout l'écran */
+    top: 0; /* Collé en haut */
+    left: 0; /* Collé à gauche */
+    width: 100%; /* Prend toute la largeur */
+    height: 100vh; /* Prend toute la hauteur visible */
+    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Floute l'arrière-plan */
+    -webkit-backdrop-filter: blur(10px); /* Adpater pour ipad */
+    display: flex; /* Flexbox pour aligner contenu */
+    flex-direction: column; /* Direction verticale */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    transform: translateX(-100%); /* Cacher complètement sur la gauche au départ */
+    transition: transform 0.5s ease; /* Animation douce pour le menu */
+    z-index: 999; /* Superposition par-dessus le reste */
+  }
+
+  .navbar .nav-links.mobile-menu {
+    transform: translateX(0); /* Fait glisser le menu pour l'afficher */
+  }
+
+  .navbar .nav-links ul {
+    flex-direction: column; /* Les liens sont empilés verticalement */
+  }
+
+  .navbar .nav-links ul li {
+    font-size: 32px;
+    margin: 40px 0; /* Espacement vertical entre les liens */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* ← Ajoute juste une ombre portée */
+  }
+}
+
+
+/* === Responsive pour téléphone === */
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  .navbar .nom {
+    font-size: 24px;
+    margin-left: -7px;
+  }
+}
+
+/* === Responsive pour tablette === */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .navbar .nom {
+    font-size: 30px;
+    margin-left: -90px;
+  }
+}
+
+
+
+
+
+
+/* === SECTION GRANDE IMAGE ET TEXTE PAR DESSUS === */
 
 .hero {
-  position: relative;
-  width: 50%;
-  height: 50vh; /* pleine hauteur de l'écran */
-  overflow: hidden;
+  position: relative; /* Position relative pour que les enfants en position absolue soient positionnés par rapport à cet élément */
+  width: 100%; /* Prend toute la largeur disponible */
+  height: 100vh; /* Hauteur égale à 100% de la hauteur de la fenêtre (viewport) */
+  overflow: hidden; /* Cache tout contenu débordant en dehors de cette section */
 }
+
+/* === Concerne que l'image dans hero === */
 
 .hero-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
+  position: absolute; /* Position absolue pour recouvrir complètement le parent */
+  top: 0; /* Positionnée en haut du parent */
+  left: 0; /* Alignée à gauche du parent */
+  width: 100%; /* Largeur maximale pour remplir le parent */
+  height: 100%; /* Hauteur maximale pour remplir le parent */
+  object-fit: cover; /* L'image couvre entièrement son conteneur en conservant ses proportions */
+  z-index: 1; /* Ordre d'empilement : positionne l'image derrière les autres éléments avec un z-index plus élevé */
 }
 
-.hero-text {
-  position: relative;
-  z-index: 2;
-  color: white;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+/* === Le voile gris sur la photo === */
+
+.voile {
+  position: absolute; /* Position absolue pour recouvrir l'image */
+  top: 0; left: 0; /* Positionné en haut à gauche */
+  width: 100%; height: 100%; /* Recouvre toute la zone de son parent */
+  background-color: rgba(0, 0, 0, 0.75); /* Couleur noire semi-transparente à 70% d’opacité */
+  z-index: 2; /* Place ce voile au-dessus de l’image mais sous le texte */
 }
 
-.contenu {
-  padding: 60px 20px;
-  background: #f5f5f5;
+
+
+/* === Le réglage de texte sur la photo === */
+
+.hero-text1, .hero-text2 {
+  line-height: 8rem;
+  margin-left: 45px;
+  position: relative; /* Position relative pour permettre l'utilisation de z-index */
+  z-index: 2; /* Empile le texte au-dessus du voile (à noter que voile a aussi z-index 2, ce serait mieux d'avoir un z-index supérieur) */
+  color: white; /* Texte en blanc */
+  top: 55%; /* Décalage vers le bas à 80% de la hauteur du parent */
+  transform: translateY(-50%); /* Décale verticalement le texte vers le haut de 50% de sa propre hauteur (centrage vertical approximatif) */
+}
+
+/* === Le typo et la taille du texte dessus === */
+
+.hero-text1 {
+  font-family: "kindora";
+  font-weight:bold;
+  font-size: 50px; 
+}
+
+.hero-text2 {
+  margin-right: 300px;
+  line-height: 2rem;
+  font-family: "montserrat";
+  font-size: 20px; 
+}
+
+
+
+
+
+/* === SECTION IMAGES EN DESSOUS === */
+
+.galerie {
+  display: flex; /* Utilise Flexbox pour aligner les images horizontalement */
+  gap: 20px; /* Espace de 20px entre chaque image */
+  justify-content: center; /* Centre les images horizontalement dans la galerie */
+  padding: 40px; /* Ajoute un espace intérieur de 40px autour de la galerie */
+  flex-wrap: wrap; /* Permet aux images de passer à la ligne sur petits écrans */
+  position: relative; /* Permet de positionner des éléments enfants (ex: fond flou) par rapport à la galerie */
+}
+
+/* Images normales */
+
+.galerie img {
+  width: 100%; /* L’image prend toute la largeur de son conteneur */
+  max-width: 500px; /* La largeur maximale de l’image est de 500px */
+  height: auto; /* La hauteur s’adapte automatiquement pour garder les proportions */
+  border-radius: 10px; /* Arrondit les coins de l’image avec un rayon de 10px */
+  cursor: pointer; /* Change le curseur en main pour indiquer que l’image est cliquable */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Anime en douceur la transformation et l’ombre */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Ombre portée subtile sous l’image */
+}
+
+/* Effet zoom léger et ombre renforcée au survol */
+
+.galerie img:hover {
+  transform: scale(1.10); /* Agrandit légèrement l’image au survol (zoom à 110%) */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Ombre portée plus visible pour faire ressortir l’image */
+}
+
+/* Fond flou lorsqu’une image est agrandie */
+
+.galerie.blur-background {
+  filter: blur(6px); /* Applique un flou de 6px sur la galerie entière */
+  pointer-events: none; /* Désactive les interactions sur la galerie floutée (clics, survols) */
+}
+
+/* Conteneur de l’image agrandie en plein écran */
+
+.image-en-plein-ecran {
+  position: fixed; /* Position fixe par rapport à la fenêtre (ne bouge pas au scroll) */
+  top: 50%; /* Centre verticalement dans la fenêtre */
+  left: 50%; /* Centre horizontalement dans la fenêtre */
+  max-width: 90vw; /* Largeur maximale : 90% de la largeur de la fenêtre */
+  max-height: 90vh; /* Hauteur maximale : 90% de la hauteur de la fenêtre */
+  transform: translate(-50%, -50%); /* Centre parfaitement l’image en décalant de 50% sa propre largeur et hauteur */
+  border-radius: 15px; /* Arrondit les coins de l’image agrandie */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Ombre portée importante pour faire ressortir l’image */
+  cursor: pointer; /* Curseur main pour indiquer que l’image agrandie est cliquable (ex: pour fermer) */
+  z-index: 10000; /* Place cette image au-dessus de tous les autres éléments */
+  transition: transform 0.4s ease; /* Animation fluide lors du zoom */
+}
+
+/* Fond sombre semi-transparent sous l’image agrandie */
+
+.fond-flou {
+  position: fixed; /* Position fixe, recouvre toute la fenêtre */
+  top: 0; left: 0; /* Positionné en haut à gauche */
+  width: 100vw; /* Largeur : 100% de la fenêtre */
+  height: 100vh; /* Hauteur : 100% de la fenêtre */
+  background: rgba(0, 0, 0, 0.6); /* Fond noir semi-transparent (opacité 60%) */
+  backdrop-filter: blur(8px); /* Floute le contenu derrière ce fond */
+  z-index: 9999; /* Place ce fond juste en dessous de l’image agrandie */
+  cursor: pointer; /* Curseur main pour indiquer que cliquer ferme le zoom */
 }
 

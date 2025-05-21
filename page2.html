@@ -8,18 +8,124 @@
 </head>
 <body>
 
+
+
+
+
+<!-- LA SECTION GRANDE PHOTO-->
+
 <section class="hero">
-  <img src="image/affiche.jpeg" alt="Image hero" class="hero-img">
-  <div class="hero-text">
-    <h1>Titre du projet</h1>
-    <p>Description de ton projet</p>
+
+
+  <!-- La nav bar-->
+
+    <nav class="navbar">
+
+      <a href="https://tablorene.wordpress.com/#image?fbclid=PAZXh0bgNhZW0CMTEAAacDc-LSxSjNtP_DaHdyP6RQxoQlJE9OHwK5kS5nZwW2Zr4iJfsMYN2XKjgZ5g_aem_G6NUQpl8PLdc69eHxFUvZA" class="nom">Lorène Taburiaux</a>
+
+      <div class="nav-links">
+
+        <ul> 
+          <li><a href="index.html#titre1">Dernières réalisations</a></li>
+          <li><a href="index.html#projets">Projets</a></li>
+          <li><a href="mailto:tab.lorene@yahoo.com">Contact</a></li>
+        </ul>
+
+      </div>
+      <img src="image/menu-hamburger.png" alt="menu-hamburger" class="menu-hamburger">
+
+    </nav>
+
+
+  <!-- La garnde image-->
+
+  <img src="image/affiche2.jpeg" alt="Image hero" class="hero-img">
+
+  <div class="voile"></div>  <!-- Voile transparent -->
+
+  <div class="hero-text1">L’après Victor Papanek</div>
+  <div class="hero-text2">À travers les haïkus, s’ouvre un sujet de société sans imposer de jugement. L’interprétation du problème devient ainsi personnelle, laissant à chacun la liberté de le voir sous un angle positif ou négatif.</div>
+
   </div>
+
 </section>
 
-<section class="contenu">
-  <p>Contenu qui apparaît quand on descend…</p>
-  <!-- autres sections ou photos -->
+
+
+
+
+<!-- LA GALLERIE PHOTO-->
+
+<section class="galerie">
+
+  <img src="image/affiche.jpeg" alt="Image 1">
+  <img src="image/affiche2.jpeg" alt="Image 2">
+
 </section>
+
+<script>
+
+// Sélectionne toutes les images dans la galerie (éléments <img> à l’intérieur de .galerie)
+const images = document.querySelectorAll('.galerie img');
+
+// Sélectionne la galerie elle-même (élément avec la classe .galerie)
+const galerie = document.querySelector('.galerie');
+
+// Variable pour stocker la div du fond flou créée dynamiquement (initialisée à null)
+let overlay = null;
+
+// Variable pour stocker l’image agrandie créée dynamiquement (initialisée à null)
+let enlargedImg = null;
+
+// Pour chaque image dans la galerie, on ajoute un écouteur d’événement 'click'
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    // Crée une nouvelle div pour le fond flou + sombre
+    overlay = document.createElement('div');
+    // Ajoute la classe 'fond-flou' à cette div pour appliquer le style CSS défini
+    overlay.classList.add('fond-flou');
+    // Ajoute cette div au corps du document (affiche le fond flou sur la page)
+    document.body.appendChild(overlay);
+
+    // Clone l’image cliquée pour créer une copie indépendante
+    enlargedImg = img.cloneNode();
+    // Ajoute la classe 'image-en-plein-ecran' pour appliquer le style d’image agrandie
+    enlargedImg.classList.add('image-en-plein-ecran');
+    // Ajoute cette image agrandie au corps du document (affiche l’image en grand)
+    document.body.appendChild(enlargedImg);
+
+    // Ajoute la classe 'blur-background' à la galerie pour appliquer un flou sur le fond
+    galerie.classList.add('blur-background');
+
+    // Ajoute un écouteur d’événement 'click' sur le fond flou pour fermer l’image agrandie
+    overlay.addEventListener('click', closeEnlarged);
+    // Ajoute un écouteur d’événement 'click' sur l’image agrandie pour fermer l’image agrandie
+    enlargedImg.addEventListener('click', closeEnlarged);
+  });
+});
+
+// Fonction qui gère la fermeture de l’image agrandie et du fond flou
+function closeEnlarged() {
+  // Si le fond flou existe encore
+  if (overlay) {
+    // Supprime le fond flou du DOM
+    overlay.remove();
+    // Réinitialise la variable à null pour éviter les références inutiles
+    overlay = null;
+  }
+  // Si l’image agrandie existe encore
+  if (enlargedImg) {
+    // Supprime l’image agrandie du DOM
+    enlargedImg.remove();
+    // Réinitialise la variable à null
+    enlargedImg = null;
+  }
+  // Enlève la classe 'blur-background' pour enlever le flou sur la galerie
+  galerie.classList.remove('blur-background');
+}
+
+
+</script>
 
 
 </body>

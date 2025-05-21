@@ -179,7 +179,6 @@ body {
 }
 
 
-
 /* === Responsive pour téléphone === */
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -213,7 +212,7 @@ body {
 .titre-site {
 	font-family: 'kindora', sans-serif; /* Police spécifique pour le titre principal */
 	position: relative; /* Pour positionner les textes enfants en absolute */
-	padding-top: 180px; /* Espace au-dessus pour ne pas coller à la navbar */
+	padding-top: 440px; /* Espace au-dessus pour ne pas coller à la navbar */
 	text-align: center; /* Centre le contenu horizontalement */
 }
 
@@ -232,15 +231,15 @@ body {
 }
 
 .text-portfolio {
-	top: -1rem; /* Position verticale par rapport au centre */
+	top: -8rem; /* Position verticale par rapport au centre */
 	font-size: 100px; /* Grande taille pour impact visuel */
 	font-weight: normal; /* Poids normal */
 }
 
 
 .text-tbx {
-	top: -25rem; /* Encore plus haut */
-	font-size: 620px; /* Très grand pour l'effet "TBX" de fond */
+	top: -27rem; /* Encore plus haut */
+	font-size: 520px; /* Très grand pour l'effet "TBX" de fond */
 	opacity: 0.1; /* Semi-transparent */
 	line-height: 1; /* Ligne serrée */
 }
@@ -300,16 +299,6 @@ body {
 
 /* === DERNIERE REALISATION (CARROUSEL HORIZONTAL) === */
 
-
-#dernières {
-	scroll-margin-top:2em;
-	}
-
-/* Flèche */
-
-.dernières {
-
-}
 
 
 .réalisation {
