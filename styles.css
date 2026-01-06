@@ -479,14 +479,16 @@ body {
 	position: relative;
 	top: 60px;
   display: grid; /* Utilise CSS Grid pour organiser les éléments */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Crée des colonnes flexibles : min 250px, max prend tout l'espace */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Crée des colonnes flexibles : min 250px, max prend tout l'espace */
   gap: var(--g); /* Espace entre les cellules (défini dans les variables CSS) */
   padding: 20px; /* Marge intérieure autour de la grille */
-  max-width: 1200px; /* Limite la largeur maximale de la galerie */
+  max-width: 100%; /* Limite la largeur maximale de la galerie */
   margin: 0 auto; /* Centre la galerie horizontalement */
   font-size: var(--font-size); /* Taille de police héritée de la variable globale */
   position: relative; /* Nécessaire pour z-index si besoin de superposer des éléments */
   z-index: 1; /* S'assure que la galerie reste visible par-dessus d'autres éléments */
+  width: 100%; /* Prend toute la largeur disponible */
+  box-sizing: border-box; /* Inclut le padding dans le calcul de largeur */
 }
 
 
