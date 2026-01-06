@@ -73,10 +73,6 @@ body {
 	height: 100svh; /* Hauteur = hauteur de la fenêtre */
 }
 
-.projet {
-	height: 50vh; /* Hauteur = hauteur de la fenêtre */
-}
-
 .titre-site, .texte-intro, .dernières {
 	display: flex; /* Utilise flexbox */
 	justify-content: center; /* Centre horizontalement */
@@ -529,7 +525,14 @@ body {
   transform: scale(var(--f)); /* Zoom selon le facteur défini dans :root */
   z-index: 1; /* Fait passer l’élément au-dessus des autres */
 }
-
+/* Désactiver les hovers en mobile */
+@media screen and (max-width: 768px) {
+  .gallery .cellule:hover {
+    filter: none;
+    transform: none;
+    z-index: auto;
+  }
+}
 
 .interieur {
 	position: absolute;
@@ -547,7 +550,6 @@ body {
     gap: 10px;
     margin-top: -50px;
     max-width: 100%;
-    margin-left: 7px;
   }
 
   .gallery > .cellule {
