@@ -110,7 +110,7 @@ body, html {
     top: 0; /* Collé en haut */
     left: 0; /* Collé à gauche */
     width: 100%; /* Prend toute la largeur */
-    height: 100vh; /* Prend toute la hauteur visible */
+    height: 100svh; /* Prend toute la hauteur visible */
     background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
     backdrop-filter: blur(10px); /* Floute l'arrière-plan */
     -webkit-backdrop-filter: blur(10px); /* Adpater pour ipad */
@@ -167,7 +167,7 @@ body, html {
 .hero {
   position: relative; /* Position relative pour que les enfants en position absolue soient positionnés par rapport à cet élément */
   width: 100%; /* Prend toute la largeur disponible */
-  height: 100vh; /* Hauteur égale à 100% de la hauteur de la fenêtre (viewport) */
+  height: 100svh; /* Hauteur égale à 100% de la hauteur de la fenêtre (viewport) */
   overflow: hidden; /* Cache tout contenu débordant en dehors de cette section */
 }
 
@@ -329,7 +329,7 @@ body, html {
   position: fixed; /* Position fixe, recouvre toute la fenêtre */
   top: 0; left: 0; /* Positionné en haut à gauche */
   width: 100vw; /* Largeur : 100% de la fenêtre */
-  height: 100vh; /* Hauteur : 100% de la fenêtre */
+  height: 100svh; /* Hauteur : 100% de la fenêtre */
   background: rgba(0, 0, 0, 0.6); /* Fond noir semi-transparent (opacité 60%) */
   backdrop-filter: blur(8px); /* Floute le contenu derrière ce fond */
   z-index: 9999; /* Place ce fond juste en dessous de l’image agrandie */

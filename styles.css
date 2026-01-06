@@ -29,7 +29,7 @@ body {
 :root {
 	--s: 300px; /* Taille des cellules (grille astuces) */
 	--g: 10px; /* Gouttière entre les cellules */
-	--f: 1.5; /* Facteur de zoom au survol */
+	--f: 1.05; /* Facteur de zoom au survol */
 	--font-size: 40px; /* Taille de police pour la galerie */
 	--couleur-fonce: 	#B98379; /* Couleur principale */
 	--couleur-clair: white; /* Couleur secondaire */
@@ -70,7 +70,7 @@ body {
 /* === STRUCTURE DES GRANDES SECTIONS === */
 
 .titre-site, .texte-intro, .dernières {
-	height: 100vh; /* Hauteur = hauteur de la fenêtre */
+	height: 100svh; /* Hauteur = hauteur de la fenêtre */
 }
 
 .projet {
@@ -157,7 +157,7 @@ body {
 		top: 0; /* Collé en haut */
 		left: 0; /* Collé à gauche */
 		width: 100%; /* Prend toute la largeur */
-		height: 100vh; /* Prend toute la hauteur visible */
+		height: 100svh; /* Prend toute la hauteur visible */
 		background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
 		backdrop-filter: blur(10px); /* Floute l'arrière-plan */
 		-webkit-backdrop-filter: blur(10px); /* Adpater pour ipad */
@@ -503,6 +503,7 @@ body {
   place-items: center; /* Centre le contenu dans les deux axes */
   border-radius: 25px; /* Coins arrondis */
   margin-bottom: 5px; /* Petit espace sous chaque cellule */
+  height: 100%; /* Hauteur à 100% pour remplir la grille */
 }
 
 .cellule img {
@@ -561,11 +562,11 @@ body {
     display: block;
   }
 
-  .gallery .cellule:hover {
-  filter: grayscale(10%); /* Applique un léger filtre gris */
-   transform: none; /* Enlever le zoom au survol */
-  z-index: 1; /* Fait passer l’élément au-dessus des autres */
-}
+  /* .gallery .cellule:hover {
+  filter: grayscale(10%);
+   transform: none;
+  z-index: 1;
+} */
 }
 
 /* Enlever la couleur des liens */
